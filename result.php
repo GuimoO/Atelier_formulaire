@@ -23,9 +23,7 @@ var_dump($result);*/
 
 /*même chose qu'au dessus mais avec une boucle if*/
 
-/*inclu la connexion bdd once car une seul fois*/
 
-include_once 'modele/connexion_bdd.php';
 
 
 /* verifie que les champs du formulaire ne sont pas vide*/
@@ -39,15 +37,26 @@ if (
 	echo "merci de remplir tous les champs";
 }
 
-/*filtre les données du champs pour ne pas interpréter du script qui aurait pu être mis ds les champs, les convertis dc en chaine de carctère et les créer de news variables*/
+
 else {
 
+	/*inclu la connexion bdd once car une seul fois*/
+
+	include_once 'connexion_bdd.php';
+
+	/*filtre les données du champs pour ne pas interpréter du script qui aurait pu être mis ds les champs, les convertis dc en chaine de carctère et les créer de news variables*/
 	$nom = htmlspecialchars($_POST['nom']);
 	$prenom = htmlspecialchars($_POST['prenom']);
 	$age = htmlspecialchars($_POST['age']);
 	$langage = htmlspecialchars($_POST['langage']);
 
-	$query=$bdd->prepare(INSERT INTO eleve)
+/*tu créer une string qui contient une requête*/
+	$query=$bdd->prepare('INSERT INTO eleve(nom, prenom,age,langage) VALUES(?,?,?,?)');
+
+/*execution de requête avec injection des variables que tu attends*/
+	$query->execute(array($nom, $prenom,$age,$langage));
+
+	$query->closeCursor();
 
 }
 
@@ -65,3 +74,9 @@ catch{
 
 cette condition s'enregistre ds un fichier à  part cf connexion bdd.php car si on a un dépot ds github on ne partage pas ses identifiants et codes...!
 */
+
+/*==============================================================*/
+
+/*redirection vers la page que l'on vt*/
+
+header ('Location: index.php');
