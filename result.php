@@ -23,7 +23,7 @@ var_dump($result);*/
 
 /*même chose qu'au dessus mais avec une boucle if*/
 
-/*inclu la connexion bdd*/
+/*inclu la connexion bdd once car une seul fois*/
 
 include_once 'modele/connexion_bdd.php';
 
@@ -47,6 +47,7 @@ else {
 	$age = htmlspecialchars($_POST['age']);
 	$langage = htmlspecialchars($_POST['langage']);
 
+	$query=$bdd->prepare(INSERT INTO eleve)
 
 }
 

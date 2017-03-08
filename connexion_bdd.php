@@ -4,7 +4,7 @@
 
 try {
 
-	$bdd = new PDD('mysql:host:localhost;dbname:NOMDELABASEDEDONNEE','root','root');
+	$bdd = new PDD('mysql:host:localhost;dbname:ploploplop','root','root');
 }
 
 catch(PDOException $e){
