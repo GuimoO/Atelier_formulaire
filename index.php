@@ -15,15 +15,15 @@
 	</div>
 	<div>
 		<label for="prenom">Prénom :</label>
-        <input id="prenom" type="text" name="Prenom" />
+        <input id="prenom" type="text" name="prenom" />
     </div>
     <div>
     	<label for="age">Age :</label>
         <input id="age"type="text" name="age" />
     </div>
     <div>
-    	<label for="nom">Langage :</label>
-        <select name="langage">
+    	<label for="langage">Langage :</label>
+        <select id="langage" name="langage">
         	<option value="JS">JS</option>
         	<option value="PHP">PHP</option>
         	<option value="Ruby">Ruby</option>
